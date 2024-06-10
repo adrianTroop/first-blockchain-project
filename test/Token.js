@@ -1,7 +1,6 @@
 //Testing Contracts
 //import necessary libraries
 const { expect } = require("chai");
-const { id } = require("ethers/lib/utils");
 const { ethers } = require("hardhat");
 
 const tokens = (n) => {
