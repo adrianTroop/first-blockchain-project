@@ -13,12 +13,49 @@ contract Token {
 
     //Tracking balances KEY VALUE pairs
     mapping(address => uint256) public balanceOf;
-    //Send Tokens
+    mapping(address => mapping (address => uint256)) public allowance;
+
+    //events Transfer
+    event Transfer(
+        address indexed from,
+        address indexed to, 
+        uint256 value
+        );
+    event Approval(
+        address indexed owner,
+        address indexed spender,
+        uint256 value
+    );
 
     constructor(string memory _name, string memory _symbol, uint256 _totalSupply) {
         name =_name;
         symbol = _symbol;
         totalSupply = _totalSupply * (10**decimals);
         balanceOf[msg.sender] = totalSupply;
+    }
+
+    function transfer(address _to, uint256 _value) 
+        public 
+        returns (bool success) 
+    {
+        require(balanceOf[msg.sender] >= _value);
+        require(_to != address(0));
+        //Take tokens from to and move to next account
+        balanceOf[msg.sender] -= _value;
+        balanceOf[_to] += _value;
+        //emit event
+        emit Transfer(msg.sender, _to, _value);
+        return true;
+    }
+    
+    function approve(address _spender, uint256 _value)
+        public 
+        returns(bool success)
+    {
+        require(_spender != address(0));
+
+        allowance[msg.sender][_spender] = _value;
+        emit Approval(msg.sender, _spender, _value);
+        return true;
     }
 }
