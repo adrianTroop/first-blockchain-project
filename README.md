@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# FIRST BLOCKCHAIN PROJECT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ERC20 Creator
+Test system implemented to fullfill all the ERC20 Standards.
+Reach implemented as i want to take the project further and create a sort of Pump.fun but on ETH.
 
 ## Available Scripts
 
