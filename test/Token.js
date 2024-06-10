@@ -15,20 +15,22 @@ describe("Token", ()=>{
     })
     //Test goes inside here.
     //What to check for
-    it("has a name", async ()=>{
-        expect(await token.name()).to.equal("Troopy Coin");
-    })
-
-    it("has a symbol", async ()=>{
-        expect(await token.symbol()).to.equal("TROC");
-    })
-
-    it("has correct decimals", async ()=>{
-        expect(await token.decimals()).to.equal("18");
-    })
-
-    it("has correct market cap", async ()=>{
-        const value = tokens("1000000");
-        expect(await token.totalSupply()).to.equal(value);
+    describe("Deployment", ()=> {
+        it("has a name", async ()=>{
+            expect(await token.name()).to.equal("Troopy Coin");
+        })
+    
+        it("has a symbol", async ()=>{
+            expect(await token.symbol()).to.equal("TROC");
+        })
+    
+        it("has correct decimals", async ()=>{
+            expect(await token.decimals()).to.equal("18");
+        })
+    
+        it("has correct market cap", async ()=>{
+            const value = tokens("1000000");
+            expect(await token.totalSupply()).to.equal(value);
+        })
     })
 });
